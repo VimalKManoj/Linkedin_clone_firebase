@@ -22,6 +22,12 @@
   align-items: center;
   color: #2172ed;
   background-color: #e9f1fc;
+  cursor: pointer;
+}
+
+.feed_input:hover {
+  background-color: #c1d9fb;
+  cursor: pointer;
 }
 
 .feed_input form {
@@ -44,4 +50,5 @@
   outline-width: 0;
   margin-left: 10px;
   width: 100%;
+  cursor: pointer;
 }

@@ -2,13 +2,13 @@ import React from "react";
 import "./sidebar.scss";
 import { Avatar } from "@mui/material";
 
-export default function Sidebar() {
+export default function Sidebar({ currentUser }) {
   return (
     <div className="sidebar">
       <div className="sidebar_top">
         <img src="src\assets\background.jpg" alt="Cover" />
         <Avatar className="avatar" />
-        <h2>Vimal K Manoj</h2>
+        <h2>{currentUser.name}</h2>
         <h4>Job Description</h4>
         <div className="sidebar_stats">
           <div>

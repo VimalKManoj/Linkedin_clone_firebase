@@ -5,17 +5,18 @@ import { useNavigate } from "react-router-dom";
 import { auth } from "../firebaseConfig";
 import Loader from "../common/Loader";
 
-export default function Home() {
-  const [loading, setLoading] = useState(true);
-  let navigate = useNavigate();
-  useEffect(() => {
-    onAuthStateChanged(auth, (res) => {
-      if (!res?.accessToken) {
-        navigate("/");
-      } else {
-        setLoading(false);
-      }
-    });
-  }, []);
-  return loading ? <Loader /> : <HomeComponent />;
+export default function Home({ currentUser }) {
+  // const [loading, setLoading] = useState(true);
+  // let navigate = useNavigate();
+  // useEffect(() => {
+  //   onAuthStateChanged(auth, (res) => {
+  //     if (!res?.accessToken) {
+  //       navigate("/");
+  //     } else {
+  //       setLoading(false);
+  //     }
+  //   });
+  // }, []);
+  // return loading ? <Loader /> : <HomeComponent currentUser={currentUser} />;
+  return <HomeComponent currentUser={currentUser} />;
 }
