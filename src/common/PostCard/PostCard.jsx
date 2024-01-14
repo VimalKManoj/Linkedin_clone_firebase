@@ -5,14 +5,24 @@ import SendIcon from "@mui/icons-material/Send";
 import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import CommentOutlinedIcon from "@mui/icons-material/CommentOutlined";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
+import { useNavigate } from "react-router-dom";
 
 export default function PostCard({ posts }) {
+  let navigate = useNavigate();
   return (
     <div className="post">
       <div className="post_header">
         <Avatar className="avatar_feed" />
         <div className="post_info">
-          <h3>{posts.userName}</h3>
+          <h3
+            onClick={() => {
+              navigate("/profile", {
+                state: { id: posts?.id, email: posts.userEmail },
+              });
+            }}
+          >
+            {posts.userName}
+          </h3>
           <p>{posts.timeStamp}</p>
         </div>
       </div>

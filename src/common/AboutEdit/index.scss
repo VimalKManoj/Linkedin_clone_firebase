@@ -1,0 +1,29 @@
+$linkedin-color: #2172ed;
+
+.edit-profile-info {
+  height: 30em;
+  padding: 1rem;
+  position: relative;
+}
+
+.edit-profile-info button {
+  margin-top: 2rem;
+  height: 40px;
+  width: 90px;
+  background-color: $linkedin-color;
+  border: none;
+  border-radius: 20px;
+  color: #fff;
+  position: absolute;
+  bottom: 8px;
+  right: 1rem;
+}
+
+.edit-profile-info textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
