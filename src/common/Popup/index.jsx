@@ -1,24 +1,26 @@
 import React from "react";
+import "./index.scss";
 import { Popover, Space } from "antd";
 import { Logout } from "../../api/AuthAPI";
 import HeaderIcons from "../Topbar/HeaderIcons";
 import { useNavigate } from "react-router-dom";
+import PersonIcon from "@mui/icons-material/Person";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 const Content = ({ navigate }) => (
-  <div>
-    <button
-      style={{
-        backgroundColor: "transparent",
-        border: "none",
-        cursor: "pointer",
-      }}
-      onClick={() => navigate("/profile")}
-    >
-      Profile
-    </button>
-    <p onClick={Logout} style={{ cursor: "pointer" }}>
-      Logout
-    </p>
+  <div className="popup">
+    <div className="btn-btn">
+      <button className="first-btn" onClick={() => navigate("/profile")}>
+        <PersonIcon sx={{ marginRight: "12px", fontSize: "32px" }} />
+        Profile
+      </button>
+    </div>
+    <div className="btn-btn">
+      <button onClick={Logout}>
+        <LogoutIcon sx={{ marginRight: "12px", fontSize: "32px" }} />
+        Logout
+      </button>
+    </div>
   </div>
 );
 

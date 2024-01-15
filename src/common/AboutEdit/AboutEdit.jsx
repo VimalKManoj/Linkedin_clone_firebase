@@ -20,7 +20,7 @@ const AboutEdit = ({ modalOpen2, setModalOpen2, currentUser }) => {
   return (
     <>
       <Modal
-        title="Edit Profile"
+        title="About Me"
         centered
         open={modalOpen2}
         onOk={() => setModalOpen2(false)}
@@ -33,7 +33,7 @@ const AboutEdit = ({ modalOpen2, setModalOpen2, currentUser }) => {
           ]
         }
       >
-        <div className="edit-profile-info">
+        <div className="edit-about-info">
           <label htmlFor="birthdate">Date of Birth:</label>
           <input
             onChange={getInput}

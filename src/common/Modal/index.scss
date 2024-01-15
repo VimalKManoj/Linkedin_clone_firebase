@@ -1,6 +1,27 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+
+$linkedin-color: #2172ed;
+
+.create-post-div {
+  height: 10em;
+}
+
 .modal-input {
   border: none;
   outline: none;
   padding-left: 0;
   font-family: system-ui, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.post-btn {
+  margin-top: 2rem;
+  height: 40px;
+  width: 90px;
+  background-color: $linkedin-color;
+  border: none;
+  border-radius: 20px;
+  color: #fff;
+  position: absolute;
+  bottom: 8px;
+  right: 1rem;
 }

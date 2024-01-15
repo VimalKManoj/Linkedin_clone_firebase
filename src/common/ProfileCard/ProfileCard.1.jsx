@@ -7,6 +7,8 @@ import AboutEdit from "../AboutEdit/AboutEdit";
 import JobEdit from "../EducationEdit/EducationEdit";
 import { useLocation } from "react-router-dom";
 import { getSingleUser, getSingleStatus } from "../../api/FirestoreAPIs";
+import NearMeIcon from "@mui/icons-material/NearMe";
+import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
 
 export const ProfileCard = ({ currentUser }) => {
   let location = useLocation();
@@ -47,10 +49,57 @@ export const ProfileCard = ({ currentUser }) => {
                   ? currentUser.name
                   : currentProfile?.name}
               </p>
+              <p className="place">
+                {(Object.values(currentProfile).length === 0
+                  ? currentUser
+                  : currentProfile
+                )?.place &&
+                  (Object.values(currentProfile).length === 0
+                    ? currentUser
+                    : currentProfile
+                  )?.job && (
+                    <>
+                      <NearMeIcon
+                        sx={{
+                          marginRight: ".6rem",
+                          height: "18px",
+                          width: "18px",
+                          color: "#2172ed",
+                        }}
+                      />
+                      <p className="name-place">
+                        {Object.values(currentProfile).length === 0
+                          ? currentUser.place
+                          : currentProfile?.place}
+                      </p>
+                      {/* <p className="bio-dob">
+                        {Object.values(currentProfile).length === 0
+                          ? currentUser.job
+                          : currentProfile?.job}
+                      </p> */}
+                    </>
+                  )}
+                {/* <NearMeIcon
+                  sx={{
+                    marginRight: ".6rem",
+                    height: "18px",
+                    width: "18px",
+                    color: "#2172ed",
+                  }}
+                  // fontSize="small"
+                />
+                {Object.values(currentProfile).length === 0
+                  ? currentUser.place
+                  : currentProfile?.place} */}
+              </p>
               {Object.values(currentProfile).length === 0 && (
                 <>
-                  <button type="submit" onClick={() => setModalOpen(true)}>
-                    <EditOutlinedIcon /> Edit Profile
+                  <button
+                    type="submit"
+                    className="edit-profile-btn"
+                    onClick={() => setModalOpen(true)}
+                  >
+                    <EditOutlinedIcon /> EDIT PROFILE
                   </button>
                   <ProfileEdit
                     modalOpen={modalOpen}
@@ -60,17 +109,13 @@ export const ProfileCard = ({ currentUser }) => {
                 </>
               )}
             </div>
-            <p>
+            <p className="job-title">
               {Object.values(currentProfile).length === 0
                 ? currentUser.job
                 : currentProfile?.job}
             </p>
-            <p>
-              {Object.values(currentProfile).length === 0
-                ? currentUser.place
-                : currentProfile?.place}
-            </p>
-            <p>
+
+            <p className="headline">
               {Object.values(currentProfile).length === 0
                 ? currentUser.headline
                 : currentProfile?.headline}
@@ -79,7 +124,7 @@ export const ProfileCard = ({ currentUser }) => {
         </div>
       </div>
       <div className="profile_inputcontainer">
-        <div className="name-place">
+        <div className="about-job">
           <p>About</p>
           {Object.values(currentProfile).length === 0 && (
             <>
@@ -98,24 +143,30 @@ export const ProfileCard = ({ currentUser }) => {
         {Object.values(currentProfile).length === 0 ? (
           currentUser.birthdate ? (
             <>
-              <p>{currentUser.birthdate}</p>
-              <p>{currentUser.bio}</p>
+              <p className="bio-dob">
+                <span>Date of Birth:</span>
+                {currentUser.birthdate}
+              </p>
+              <p className="bio-dob">{currentUser.bio}</p>
             </>
           ) : (
-            <p>About content</p>
+            <p className="bio-dob">Add About Info</p>
           )
         ) : currentProfile?.birthdate ? (
           <>
-            <p>{currentProfile.birthdate}</p>
-            <p>{currentProfile.bio}</p>
+            <p className="bio-dob">
+              <span>Date of Birth:</span>
+              {currentProfile.birthdate}
+            </p>
+            <p className="bio-dob">{currentProfile.bio}</p>
           </>
         ) : (
-          <p>About content</p>
+          <p className="bio-dob">About not found</p>
         )}
       </div>
 
       <div className="profile_inputcontainer">
-        <div className="name-place">
+        <div className="about-job">
           <p>Job and Experience</p>
           {Object.values(currentProfile).length === 0 && (
             <>
@@ -137,31 +188,49 @@ export const ProfileCard = ({ currentUser }) => {
               currentUser.experiences && currentUser.experiences.length > 0 ? (
                 currentUser.experiences.map((experience, index) => (
                   <li key={index}>
-                    <strong>{experience.jobTitle}</strong> at{" "}
-                    {experience.company}, {experience.location}
+                    <div className="head">
+                      <DoubleArrowIcon
+                        fontSize="large"
+                        sx={{ color: "#2172ed" }}
+                      />
+                      <strong>{experience.jobTitle}</strong>
+                    </div>
+                    <span className="list-company">{experience.company}</span>
+                    <span className="list-location">{experience.location}</span>
                     <br />
-                    {experience.startDate} - {experience.endDate}
+                    <span className="jobdate">
+                      {experience.startDate} - {experience.endDate}
+                    </span>
                     <br />
-                    {experience.description}
+                    <span className="jobdesc">{experience.description}</span>
                   </li>
                 ))
               ) : (
-                <li>No experience</li>
+                <li className="name-place">No experience added</li>
               )
             ) : currentProfile.experiences &&
               currentProfile.experiences.length > 0 ? (
               currentProfile.experiences.map((experience, index) => (
                 <li key={index}>
-                  <strong>{experience.jobTitle}</strong> at {experience.company}
-                  , {experience.location}
+                  <div className="head">
+                    <DoubleArrowIcon
+                      fontSize="large"
+                      sx={{ color: "#2172ed" }}
+                    />
+                    <strong>{experience.jobTitle}</strong>
+                  </div>
+                  <span className="list-company">{experience.company}</span>
+                  <span className="list-location">{experience.location}</span>
                   <br />
-                  {experience.startDate} - {experience.endDate}
+                  <span className="jobdate">
+                    {experience.startDate} - {experience.endDate}
+                  </span>
                   <br />
-                  {experience.description}
+                  <span className="jobdesc">{experience.description}</span>
                 </li>
               ))
             ) : (
-              <li>No experience</li>
+              <li className="name-place">No experience added</li>
             )}
           </ul>
         </section>

@@ -70,7 +70,7 @@ const ProfileEdit = ({ modalOpen, setModalOpen, currentUser }) => {
             rows={4}
             type="text"
             name="headline"
-            maxLength="150"
+            maxLength="170"
             placeholder="Enter your headline"
             required
           />

@@ -245,7 +245,7 @@ const JobEdit = ({ modalOpen3, setModalOpen3, currentUser }) => {
         onCancel={() => setModalOpen3(false)}
         footer={[]}
       >
-        <div className="edit-profile-info">
+        <div className="edit-job-info">
           <label htmlFor="jobTitle">Job Title:</label>
           <input
             type="text"

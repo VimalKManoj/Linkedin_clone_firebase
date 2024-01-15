@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+
 .post {
   padding: 1rem;
   background-color: white;
@@ -9,19 +11,25 @@
 
 .post_header {
   display: flex;
+  align-items: center;
   margin-bottom: 1rem;
 }
 
 .avatar_feed {
+  cursor: pointer;
   height: 40px !important;
   width: 40px !important;
 }
 
 .post_info {
+  font-family: "roboto";
+  font-size: 18px;
+  font-weight: 300;
   margin-left: 1rem;
 }
 
 .post_info > h3 {
+  cursor: pointer;
   color: #313131;
   font-size: 1rem;
   font-weight: 700;
@@ -29,12 +37,15 @@
 
 .post_info > p {
   margin-top: 4px;
-  font-size: 14px;
+  font-size: 12px;
   color: grey;
 }
 
 .post_body {
   overflow-wrap: anywhere;
+  font-family: "roboto";
+  font-size: 14px;
+  font-weight: 500;
   margin: 1.5rem 0;
 }
 

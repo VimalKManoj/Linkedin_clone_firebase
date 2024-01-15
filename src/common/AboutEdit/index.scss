@@ -1,12 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+
 $linkedin-color: #2172ed;
 
-.edit-profile-info {
-  height: 30em;
+.edit-about-info {
+  height: 32em;
   padding: 1rem;
   position: relative;
 }
 
-.edit-profile-info button {
+.edit-about-info button {
   margin-top: 2rem;
   height: 40px;
   width: 90px;
@@ -19,7 +21,7 @@ $linkedin-color: #2172ed;
   right: 1rem;
 }
 
-.edit-profile-info textarea {
+.edit-about-info textarea {
   width: 100%;
   padding: 10px;
   margin-bottom: 15px;

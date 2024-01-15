@@ -28,21 +28,24 @@ const ModalComponent = ({
           </Button>,
         ]}
       >
-        <input
-          className="modal-input"
-          placeholder="What do you want to talk about?"
-          onChange={(event) => {
-            setStatus(event.target.value);
-          }}
-          value={status}
-        ></input>
-        <button
-          type="submit"
-          onClick={sendStatus}
-          disabled={status.length > 0 ? false : true}
-        >
-          Post
-        </button>
+        <div className="create-post-div">
+          <input
+            className="modal-input"
+            placeholder="What do you want to talk about?"
+            onChange={(event) => {
+              setStatus(event.target.value);
+            }}
+            value={status}
+          ></input>
+          <button
+            type="submit"
+            className="post-btn"
+            onClick={sendStatus}
+            disabled={status.length > 0 ? false : true}
+          >
+            Post
+          </button>
+        </div>
       </Modal>
     </>
   );
