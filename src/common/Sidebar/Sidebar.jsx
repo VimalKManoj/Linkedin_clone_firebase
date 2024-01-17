@@ -14,20 +14,11 @@ export default function Sidebar({ currentUser }) {
         }}
       >
         <img src="src\assets\background.jpg" alt="Cover" />
-        <Avatar className="avatar" />
+        <Avatar className="avatar" src={currentUser.profileLink} />
         <h2>{currentUser.name}</h2>
         <h4>{currentUser?.job}</h4>
         <div className="sidebar_stats">
-          <div>
-            {currentUser?.headline}
-            {/* <h5>120</h5>
-            <h5>Profile Views</h5>
-          </div>
-          <div className="line"></div>
-          <div>
-            <h5>500</h5>
-            <h5>Post Views</h5> */}
-          </div>
+          <div>{currentUser?.headline}</div>
         </div>
       </div>
       <div className="sidebar_bottom"></div>

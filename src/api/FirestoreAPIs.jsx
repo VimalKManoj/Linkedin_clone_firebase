@@ -7,11 +7,16 @@ import {
   updateDoc,
   where,
   query,
+  setDoc,
+  deleteDoc,
+  orderBy,
 } from "firebase/firestore";
 import { toast } from "react-toastify";
 
 let postsRef = collection(firestore, "posts");
 let userRefs = collection(firestore, "users");
+let likeRefs = collection(firestore, "likes");
+let commentRefs = collection(firestore, "comments");
 
 export const postStatus = (object) => {
   addDoc(postsRef, object)
@@ -87,4 +92,67 @@ export const getSingleUser = (setCurrentUser, email) => {
       })[0]
     );
   });
+};
+
+export const likePost = (userid, postid, liked) => {
+  try {
+    let docToLike = doc(likeRefs, `${userid}_${postid}`);
+    if (liked) {
+      deleteDoc(docToLike);
+    } else {
+      setDoc(docToLike, { userid, postid });
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const getLikesByUser = (userid, postid, setLiked, setLikesCount) => {
+  try {
+    let likeQuery = query(likeRefs, where("postid", "==", postid));
+
+    onSnapshot(likeQuery, (response) => {
+      let likes = response.docs.map((doc) => doc.data());
+      let likesCount = likes?.length;
+
+      const isLiked = likes.some((like) => like.userid === userid);
+
+      setLikesCount(likesCount);
+      setLiked(isLiked);
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const postComment = (postid, comment, timeStamp, name) => {
+  try {
+    addDoc(commentRefs, {
+      postid,
+      comment,
+      timeStamp,
+      name,
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const getComments = (postid, setComments) => {
+  try {
+    let singlePostQuery = query(commentRefs, where("postid", "==", postid));
+
+    onSnapshot(singlePostQuery, (response) => {
+      const comments = response.docs.map((doc) => {
+        return {
+          id: doc.id,
+          ...doc.data(),
+        };
+      });
+
+      setComments(comments);
+    });
+  } catch (err) {
+    console.log(err);
+  }
 };

@@ -24,19 +24,20 @@ const Content = ({ navigate }) => (
   </div>
 );
 
-const Popup = () => {
+const Popup = ({ currentUser }) => {
   const navigate = useNavigate();
   return (
     <Space wrap>
       <Popover content={<Content navigate={navigate} />} trigger="click">
         <button
           style={{
+            padding: "0",
             backgroundColor: "transparent",
             fontFamily: "'Times New Roman'",
             border: "none",
           }}
         >
-          <HeaderIcons avatar="/Photo1.jpg" title="Me" />
+          <HeaderIcons avatar={currentUser.profileLink} title="Me" />
         </button>
       </Popover>
     </Space>

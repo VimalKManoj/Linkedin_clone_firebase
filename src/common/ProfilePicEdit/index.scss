@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+
+$linkedin-color: #2172ed;
+
+.edit-profilepic-info {
+  height: 40em;
+  padding: 1rem;
+  position: relative;
+}
+
+.edit-profilepic-info button {
+  margin-top: 2rem;
+  height: 40px;
+  width: 90px;
+  background-color: $linkedin-color;
+  border: none;
+  border-radius: 20px;
+  color: #fff;
+  position: absolute;
+  bottom: 8px;
+  right: 1rem;
+}
+
+.image-upload-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0rem;
+  height: 80%;
+
+  border: 1px dotted black;
+}
+
+.image-upload-main label {
+  display: flex;
+
+  font-size: 100px !important;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+.upload-btn {
+}

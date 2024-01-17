@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import "./index.scss";
 import { Avatar } from "@mui/material";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
@@ -6,9 +6,15 @@ import ProfileEdit from "../ProfileEdit/ProfileEdit";
 import AboutEdit from "../AboutEdit/AboutEdit";
 import JobEdit from "../EducationEdit/EducationEdit";
 import { useLocation } from "react-router-dom";
-import { getSingleUser, getSingleStatus } from "../../api/FirestoreAPIs";
+import {
+  getSingleUser,
+  getSingleStatus,
+  editProfile,
+} from "../../api/FirestoreAPIs";
 import NearMeIcon from "@mui/icons-material/NearMe";
 import DoubleArrowIcon from "@mui/icons-material/DoubleArrow";
+import { uploadImage } from "../../api/ImageAPI";
+import ProfilePicEdit from "../ProfilePicEdit/ProfilePicEdit";
 
 export const ProfileCard = ({ currentUser }) => {
   let location = useLocation();
@@ -16,9 +22,26 @@ export const ProfileCard = ({ currentUser }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [modalOpen2, setModalOpen2] = useState(false);
   const [modalOpen3, setModalOpen3] = useState(false);
-
+  const [modalOpen4, setModalOpen4] = useState(false);
+  const [currentImage, setCurrentImage] = useState({});
+  const [progress, setProgress] = useState(0);
   const [allStatuses, setAllStatus] = useState([]);
   const [currentProfile, setCurrentProfile] = useState({});
+  // const [profileLink, setProfileLink] = useState("");
+
+  const getImage = (event) => {
+    setCurrentImage(event.target.files[0]);
+  };
+
+  const imageUpload = () => {
+    uploadImage(
+      currentImage,
+      currentUser.id,
+      setModalOpen4,
+      setProgress,
+      setCurrentImage
+    );
+  };
 
   useMemo(() => {
     if (location?.state?.id) {
@@ -34,14 +57,52 @@ export const ProfileCard = ({ currentUser }) => {
     setExperiences([...experiences, experienceData]);
   };
 
+  // useEffect(() => {
+  //   editProfile(currentUser.id, profileLink);
+  // }, [profileLink]);
+
   return (
     <div className="profile">
       <div className="profile_inputcontainer">
         <img src="src\assets\background.jpg" />
         <div className="profile-info">
-          <div>
-            <Avatar className="profile-pic" />
-          </div>
+          {Object.values(currentProfile).length === 0 ? (
+            <div>
+              <button
+                onClick={() => setModalOpen4(true)}
+                className="profile-pic profile-btn"
+              ></button>
+              {/* <input type="file"  />
+            <button onClick={imageUpload}>Upload</button> */}
+              <ProfilePicEdit
+                setModalOpen4={setModalOpen4}
+                modalOpen4={modalOpen4}
+                getImage={getImage}
+                imageUpload={imageUpload}
+                currentImage={currentImage}
+                progress={progress}
+              />
+              <Avatar
+                className="profile-pic"
+                src={
+                  Object.values(currentProfile).length === 0
+                    ? currentUser?.profileLink
+                    : currentProfile?.profileLink
+                }
+              />
+            </div>
+          ) : (
+            <div>
+              <Avatar
+                className="profile-pic"
+                src={
+                  Object.values(currentProfile).length === 0
+                    ? currentUser?.profileLink
+                    : currentProfile?.profileLink
+                }
+              />
+            </div>
+          )}
           <div className="profile-text-info">
             <div className="name-place">
               <p>

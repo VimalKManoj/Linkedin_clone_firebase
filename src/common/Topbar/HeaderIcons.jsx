@@ -1,11 +1,13 @@
 import { Avatar } from "@mui/material";
 import React from "react";
 
-const HeaderIcons = ({ avatar, Icon, title }) => {
+const HeaderIcons = ({ avatar, Icon, title, currentUser }) => {
   return (
     <div className="headericons">
       {Icon && <Icon className="headericons_icons" />}
-      {avatar && <Avatar className="headericons_icons" src={avatar} />}
+      {avatar && (
+        <Avatar className="headericons_icons" sx="large" src={avatar} />
+      )}
       <h4 className="headericons_title">{title}</h4>
     </div>
   );

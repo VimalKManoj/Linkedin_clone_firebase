@@ -34,10 +34,13 @@ export default function PostStatus({ currentUser }) {
   return (
     <div className="feed">
       <div className="feed_inputcontainer">
+        <h4 className="new-post">NEW POST</h4>
         <div className="feed_input">
           <CreateOutlinedIcon />
 
-          <button onClick={() => setModalOpen(true)}>Start a post...</button>
+          <button onClick={() => setModalOpen(true)}>
+            What's on your mind?
+          </button>
           <ModalComponent
             modalOpen={modalOpen}
             setModalOpen={setModalOpen}
@@ -48,7 +51,7 @@ export default function PostStatus({ currentUser }) {
         </div>
       </div>
       {allStatus.map((posts) => {
-        return <PostCard posts={posts} />;
+        return <PostCard posts={posts} key={posts.id} />;
       })}
     </div>
   );

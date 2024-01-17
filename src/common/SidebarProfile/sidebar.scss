@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
+
+.app_container {
+  margin: 0 0.7rem;
+  display: flex;
+  justify-content: center;
+  background-color: #ebf2fa;
+  min-height: 100vh;
+  height: 100%;
+}
+
+.sidebar_profile {
+  flex: 0.22;
+  position: sticky;
+}
+
+.sidebar_top_profile {
+  display: flex;
+  border-radius: 10px;
+  flex-direction: column;
+  justify-content: center;
+  // align-items: center;
+  padding: 2.5rem;
+  padding-top: 1rem;
+  margin: 0.8rem;
+  background-color: white;
+  overflow: hidden;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  line-height: 2rem;
+  padding-bottom: 3rem;
+  cursor: pointer;
+}
+
+.sidebar_top_profile > h2 {
+  font-family: "roboto";
+  font-size: 12px;
+  font-weight: 700;
+  color: #2172ed;
+}
+
+.hr {
+  color: #ebf2fa;
+  opacity: 20%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  // border: none;
+}
+
+.sidebar_top_profile > h4 {
+  font-weight: 400;
+  color: #313131;
+  font-family: "roboto";
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.sidebar_stats_profile {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 0;
+}
+
+.sidebar_stats_profile h2 {
+  font-weight: 700;
+  color: #2172ed;
+  font-family: "roboto";
+  font-size: 52px;
+  margin-bottom: 0.8rem;
+}
+
+.sidebar_stats_profile h4 {
+  font-family: "roboto";
+  font-size: 14px;
+  font-weight: 500;
+}

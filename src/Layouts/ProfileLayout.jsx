@@ -1,8 +1,9 @@
 import React, { useMemo, useState } from "react";
 import Topbar from "../common/Topbar/Index";
-import Sidebar from "../common/Sidebar/Sidebar";
+
 import { getCurrentUser } from "../api/FirestoreAPIs";
 import Profile from "../Pages/Profile";
+import SidebarProfile from "../common/SidebarProfile/SidebarProfile";
 
 export default function ProfileLayout() {
   const [currentUser, setCurrentUser] = useState({});
@@ -16,6 +17,7 @@ export default function ProfileLayout() {
       <div className="app_container">
         {/* <Sidebar currentUser={currentUser} /> */}
         <Profile currentUser={currentUser} />
+        <SidebarProfile currentUser={currentUser} />
       </div>
     </div>
   );

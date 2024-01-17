@@ -10,11 +10,7 @@ export const ProfileComponent = ({ currentUser }) => {
   };
   return (
     <>
-      {/* {isEdit ? (
-        <ProfileEdit onEdit={onEdit} />
-      ) : ( */}
       <ProfileCard currentUser={currentUser} onEdit={onEdit} />
-      {/* )} */}
     </>
   );
 };
