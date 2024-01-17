@@ -156,3 +156,13 @@ export const getComments = (postid, setComments) => {
     console.log(err);
   }
 };
+
+export const getAllUsers = (setAllUsers) => {
+  onSnapshot(userRefs, (response) => {
+    setAllUsers(
+      response.docs.map((docs) => {
+        return { ...docs.data(), id: docs.id };
+      })
+    );
+  });
+};

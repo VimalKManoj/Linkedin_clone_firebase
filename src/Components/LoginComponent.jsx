@@ -33,11 +33,11 @@ export const LoginComponent = () => {
         <h3>
           Welcome to your <br></br>professional community
         </h3>
-        <img src="src\assets\linkedin_logo.png" alt="Login Image" />
+        <img src="public\assets\linkedin_logo.png" alt="Login Image" />
       </div>
       <div className="login-form">
         <img
-          src="src\assets\LinkedinLogo.png"
+          src="public\assets\LinkedinLogo.png"
           alt="Login Image"
           className="signlogo"
         />

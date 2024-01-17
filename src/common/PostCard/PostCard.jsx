@@ -11,12 +11,14 @@ import {
   getCurrentUser,
   postComment,
   getComments,
+  getAllUsers,
 } from "../../api/FirestoreAPIs";
 import Likebutton from "../LikeButton/likebutton.scss/Likebutton";
 
 export default function PostCard({ posts }) {
   const [showCommentBox, setShowCommentBox] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
+  const [allUsers, setAllUsers] = useState([]);
   const [comment, setComment] = useState("");
   const [comments, setComments] = useState([]);
 
@@ -31,13 +33,15 @@ export default function PostCard({ posts }) {
 
   useMemo(() => {
     getCurrentUser(setCurrentUser);
+    getAllUsers(setAllUsers);
   }, []);
 
   useMemo(() => {
     getComments(posts.id, setComments);
   }, [posts.id, currentUser.id]);
 
-  // console.log(comments);
+  console.log(posts);
+
   let navigate = useNavigate();
   return (
     <div className="post">
