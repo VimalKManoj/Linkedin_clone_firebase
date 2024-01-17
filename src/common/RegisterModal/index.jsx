@@ -39,7 +39,7 @@ const RegisterModal = ({ modalOpen, setModalOpen }) => {
       >
         <div className="register-modal-container">
           <img
-            src="public\assets\linkedin_icon.png"
+            src="/assets/linkedin_icon.png"
             alt="Login Image"
             className="registerlogo"
           />

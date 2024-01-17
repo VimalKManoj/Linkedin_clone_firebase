@@ -13,7 +13,7 @@ export default function Sidebar({ currentUser }) {
           navigate("/profile");
         }}
       >
-        <img src="public\assets\background.jpg" alt="Cover" />
+        <img src="/assets/background.jpg" alt="Cover" />
         <Avatar className="avatar" src={currentUser.profileLink} />
         <h2>{currentUser.name}</h2>
         <h4>{currentUser?.job}</h4>

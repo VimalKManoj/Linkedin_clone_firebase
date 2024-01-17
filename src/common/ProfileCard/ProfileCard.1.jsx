@@ -64,7 +64,7 @@ export const ProfileCard = ({ currentUser }) => {
   return (
     <div className="profile">
       <div className="profile_inputcontainer">
-        <img src="public\assets\background.jpg" />
+        <img src="/assets/background.jpg" />
         <div className="profile-info">
           {Object.values(currentProfile).length === 0 ? (
             <div>

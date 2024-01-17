@@ -18,7 +18,7 @@ export default function Topbar({ currentUser }) {
         <img
           onClick={() => navigate("/home")}
           // src="public\assets\linkedin_icon.png"
-          src="public\assets\linkedin_icon.png"
+          src="/assets/linkedin_icon.png"
           alt=""
         />
 
