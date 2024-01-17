@@ -40,14 +40,19 @@ export default function PostCard({ posts }) {
     getComments(posts.id, setComments);
   }, [posts.id, currentUser.id]);
 
-  console.log(posts);
-
   let navigate = useNavigate();
   return (
     <div className="post">
       <div className="post-header-body">
         <div className="post_header">
-          <Avatar className="avatar_feed" />
+          <Avatar
+            className="avatar_feed"
+            src={
+              allUsers
+                .filter((item) => item.id === posts.userID)
+                .map((item) => item.profileLink)[0]
+            }
+          />
           <div className="post_info">
             <h3
               onClick={() => {
@@ -56,7 +61,11 @@ export default function PostCard({ posts }) {
                 });
               }}
             >
-              {posts.userName}
+              {
+                allUsers
+                  .filter((item) => item.id === posts.userID)
+                  .map((item) => item.name)[0]
+              }
             </h3>
             <p>{posts.timeStamp}</p>
           </div>

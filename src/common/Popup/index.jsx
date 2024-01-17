@@ -37,7 +37,10 @@ const Popup = ({ currentUser }) => {
             border: "none",
           }}
         >
-          <HeaderIcons avatar={currentUser.profileLink} title="Me" />
+          <HeaderIcons
+            avatar={currentUser.profileLink ? currentUser.profileLink : "no"}
+            title="Me"
+          />
         </button>
       </Popover>
     </Space>
