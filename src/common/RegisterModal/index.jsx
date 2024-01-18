@@ -51,6 +51,7 @@ const RegisterModal = ({ modalOpen, setModalOpen }) => {
               Create your account
             </p>
             <input
+              className="input-content"
               onChange={(event) =>
                 setCredentials({ ...credentails, name: event.target.value })
               }
@@ -60,6 +61,7 @@ const RegisterModal = ({ modalOpen, setModalOpen }) => {
             />
 
             <input
+              className="input-content"
               onChange={(event) =>
                 setCredentials({ ...credentails, email: event.target.value })
               }
@@ -72,6 +74,7 @@ const RegisterModal = ({ modalOpen, setModalOpen }) => {
                 setCredentials({ ...credentails, password: event.target.value })
               }
               type="password"
+              className="input-content"
               placeholder="Password (6 or more characters)"
               required
             />

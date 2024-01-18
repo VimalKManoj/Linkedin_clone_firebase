@@ -45,6 +45,7 @@ export const LoginComponent = () => {
         <div className="auth-inputs">
           <p>Welcome back! Please login into your account.</p>
           <input
+            className="input-content"
             onChange={(event) =>
               setCredentials({ ...credentails, email: event.target.value })
             }
@@ -53,6 +54,7 @@ export const LoginComponent = () => {
             required
           />
           <input
+            className="input-content"
             onChange={(event) =>
               setCredentials({ ...credentails, password: event.target.value })
             }

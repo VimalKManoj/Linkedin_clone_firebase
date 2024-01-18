@@ -10,10 +10,15 @@
   overflow: hidden;
 }
 
+.avatar-info {
+  display: flex;
+}
+
 .post_header {
   display: flex;
   align-items: center;
   margin-bottom: 1rem;
+  justify-content: space-between;
 }
 
 .post-header-body {

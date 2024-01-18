@@ -12,6 +12,11 @@ $linkedin-color: #2172ed;
   box-sizing: border-box;
 }
 
+.input-content {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+}
+
 .image-container {
   width: 50vw;
   // background: radial-gradient(
@@ -108,7 +113,7 @@ form {
 }
 
 .auth-inputs p {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   margin-bottom: 2rem;
   color: #818078;
@@ -121,7 +126,7 @@ form {
   align-items: center;
 }
 .sign-in p {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 600;
   margin-bottom: 2rem;
   color: #000000;
@@ -130,7 +135,7 @@ form {
 .sign-in button {
   // background-color: $linkedin-color;
   color: $linkedin-color;
-  font-family: "Montserrat";
+  font-family: "Roboto";
   border: 1px solid black;
   font-weight: 600;
   padding: 10px 15px;

@@ -125,13 +125,14 @@ export const getLikesByUser = (userid, postid, setLiked, setLikesCount) => {
   }
 };
 
-export const postComment = (postid, comment, timeStamp, name) => {
+export const postComment = (postid, comment, timeStamp, name, userid) => {
   try {
     addDoc(commentRefs, {
       postid,
       comment,
       timeStamp,
       name,
+      userid,
     });
   } catch (err) {
     console.log(err);
@@ -165,4 +166,25 @@ export const getAllUsers = (setAllUsers) => {
       })
     );
   });
+};
+
+export const updatePost = (id, status) => {
+  let postToUpdate = doc(postsRef, id);
+  try {
+    updateDoc(postToUpdate, { status });
+    toast.success("post has been updated successfully");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const deletePost = (id) => {
+  let postTodelete = doc(postsRef, id);
+
+  try {
+    deleteDoc(postTodelete);
+    toast.success("Post has been deleted successfully");
+  } catch (error) {
+    console.log(error);
+  }
 };

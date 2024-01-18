@@ -5,6 +5,7 @@ import SendIcon from "@mui/icons-material/Send";
 import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
 import getCurrentTime from "../../helper/Moment";
 import { formatFirebaseTimestamp } from "../../helper/TimeFormatter";
+import Morepopover from "../MorePopOver/Morepopover";
 
 import { useNavigate } from "react-router-dom";
 import {
@@ -15,7 +16,7 @@ import {
 } from "../../api/FirestoreAPIs";
 import Likebutton from "../LikeButton/likebutton.scss/Likebutton";
 
-export default function PostCard({ posts }) {
+export default function PostCard({ posts, getEditData }) {
   const [showCommentBox, setShowCommentBox] = useState(false);
   const [currentUser, setCurrentUser] = useState({});
   const [allUsers, setAllUsers] = useState([]);
@@ -27,7 +28,13 @@ export default function PostCard({ posts }) {
   };
 
   const addComment = () => {
-    postComment(posts.id, comment, getCurrentTime(), currentUser.name);
+    postComment(
+      posts.id,
+      comment,
+      getCurrentTime(),
+      currentUser.name,
+      currentUser.id
+    );
     setComment("");
   };
 
@@ -40,35 +47,51 @@ export default function PostCard({ posts }) {
     getComments(posts.id, setComments);
   }, [posts.id, currentUser.id]);
 
+  // console.log(comments);
+
   let navigate = useNavigate();
   return (
     <div className="post">
       <div className="post-header-body">
         <div className="post_header">
-          <Avatar
-            className="avatar_feed"
-            src={
-              allUsers
-                .filter((item) => item.id === posts.userID)
-                .map((item) => item.profileLink)[0]
-            }
-          />
-          <div className="post_info">
-            <h3
+          <div className="avatar-info">
+            <Avatar
               onClick={() => {
                 navigate("/profile", {
                   state: { id: posts?.id, email: posts.userEmail },
                 });
               }}
-            >
-              {
+              className="avatar_feed"
+              src={
                 allUsers
                   .filter((item) => item.id === posts.userID)
-                  .map((item) => item.name)[0]
+                  .map((item) => item.profileLink)[0]
               }
-            </h3>
-            <p>{posts.timeStamp}</p>
+            />
+            <div className="post_info">
+              <h3
+                onClick={() => {
+                  navigate("/profile", {
+                    state: { id: posts?.id, email: posts.userEmail },
+                  });
+                }}
+              >
+                {
+                  allUsers
+                    .filter((item) => item.id === posts.userID)
+                    .map((item) => item.name)[0]
+                }
+              </h3>
+              <p>{posts.timeStamp}</p>
+            </div>
           </div>
+          {currentUser.id === posts.userID ? (
+            <div className="more-popover">
+              <Morepopover getEditData={getEditData} posts={posts} />
+            </div>
+          ) : (
+            <></>
+          )}
         </div>
         <div className="post_body">
           <p>{posts.status}</p>
@@ -93,7 +116,7 @@ export default function PostCard({ posts }) {
               name="comment"
               value={comment}
             />
-            <button onClick={addComment}>
+            <button onClick={addComment} disabled={comment ? false : true}>
               <SendIcon fontSize="small" />
             </button>
           </div>
@@ -117,10 +140,23 @@ export default function PostCard({ posts }) {
               return (
                 <>
                   <div className="single-comment">
-                    <Avatar className="avatar_feed" />
+                    <Avatar
+                      className="avatar_feed"
+                      src={
+                        allUsers
+                          .filter((item) => item.id === comment.userid)
+                          .map((item) => item.profileLink)[0]
+                      }
+                    />
                     <div className="name-comment">
                       <p key={comment.id}>
-                        <span>{comment.name}</span>
+                        <span>
+                          {
+                            allUsers
+                              .filter((item) => item.id === comment.userid)
+                              .map((item) => item.name)[0]
+                          }
+                        </span>
                         {comment.comment}
                       </p>
                       <p className="comment-content">

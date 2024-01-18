@@ -2,16 +2,17 @@ import React, { useMemo, useState } from "react";
 import CreateOutlinedIcon from "@mui/icons-material/CreateOutlined";
 import "./index.scss";
 import ModalComponent from "../Modal";
-import { getStatus, postStatus } from "../../api/FirestoreAPIs";
+import { getStatus, postStatus, updatePost } from "../../api/FirestoreAPIs";
 import PostCard from "../PostCard/PostCard";
 import getCurrentTime from "../../helper/Moment";
 import { getUniqueID } from "../../helper/getUniqueID";
 
 export default function PostStatus({ currentUser }) {
-  let userEmail = localStorage.getItem("userEmail");
   const [modalOpen, setModalOpen] = useState(false);
   const [status, setStatus] = useState("");
   const [allStatus, setAllStatus] = useState([]);
+  const [currentPost, setCurrentPost] = useState({});
+  const [isEdit, setisEdit] = useState(false);
 
   const sendStatus = async () => {
     let object = {
@@ -25,7 +26,21 @@ export default function PostStatus({ currentUser }) {
 
     await postStatus(object);
     await setModalOpen(false);
+    setisEdit(false);
     await setStatus("");
+  };
+
+  const getEditData = (posts) => {
+    setCurrentPost(posts);
+    setModalOpen(true);
+    setStatus(posts?.status);
+    setisEdit(true);
+  };
+
+  const updateStatus = () => {
+    updatePost(currentPost.id, status);
+    setModalOpen(false);
+    setStatus("");
   };
 
   useMemo(() => {
@@ -38,7 +53,12 @@ export default function PostStatus({ currentUser }) {
         <div className="feed_input">
           <CreateOutlinedIcon />
 
-          <button onClick={() => setModalOpen(true)}>
+          <button
+            onClick={() => {
+              setModalOpen(true);
+              setisEdit(false);
+            }}
+          >
             What's on your mind?
           </button>
           <ModalComponent
@@ -47,11 +67,15 @@ export default function PostStatus({ currentUser }) {
             status={status}
             setStatus={setStatus}
             sendStatus={sendStatus}
+            isEdit={isEdit}
+            updateStatus={updateStatus}
           />
         </div>
       </div>
       {allStatus.map((posts) => {
-        return <PostCard posts={posts} key={posts.id} />;
+        return (
+          <PostCard posts={posts} key={posts.id} getEditData={getEditData} />
+        );
       })}
     </div>
   );
