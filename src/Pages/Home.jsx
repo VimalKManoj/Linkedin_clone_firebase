@@ -6,6 +6,7 @@ import { auth } from "../firebaseConfig";
 import Loader from "../common/Loader";
 
 export default function Home({ currentUser }) {
+  const [loading, setLoading] = useState(true);
   let navigate = useNavigate();
   useEffect(() => {
     onAuthStateChanged(auth, (res) => {
