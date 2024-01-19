@@ -47,8 +47,6 @@ export default function PostCard({ posts, getEditData }) {
     getComments(posts.id, setComments);
   }, [posts.id, currentUser.id]);
 
-  // console.log(comments);
-
   let navigate = useNavigate();
   return (
     <div className="post">
@@ -95,6 +93,11 @@ export default function PostCard({ posts, getEditData }) {
         </div>
         <div className="post_body">
           <p>{posts.status}</p>
+          {posts.postImage ? (
+            <img className="post-image" src={posts.postImage}></img>
+          ) : (
+            <></>
+          )}
         </div>
       </div>
 

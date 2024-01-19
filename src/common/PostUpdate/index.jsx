@@ -6,13 +6,17 @@ import { getStatus, postStatus, updatePost } from "../../api/FirestoreAPIs";
 import PostCard from "../PostCard/PostCard";
 import getCurrentTime from "../../helper/Moment";
 import { getUniqueID } from "../../helper/getUniqueID";
+import { PostUploadImage } from "../../api/ImageAPI";
 
 export default function PostStatus({ currentUser }) {
+  // const [currentImage, setCurrentImage] = useState({});
   const [modalOpen, setModalOpen] = useState(false);
   const [status, setStatus] = useState("");
   const [allStatus, setAllStatus] = useState([]);
   const [currentPost, setCurrentPost] = useState({});
   const [isEdit, setisEdit] = useState(false);
+  const [postImage, setPostImage] = useState("");
+  const [progress, setProgress] = useState(0);
 
   const sendStatus = async () => {
     let object = {
@@ -22,6 +26,7 @@ export default function PostStatus({ currentUser }) {
       userName: currentUser.name,
       postID: getUniqueID(),
       userID: currentUser.id,
+      postImage: postImage,
     };
 
     await postStatus(object);
@@ -38,10 +43,12 @@ export default function PostStatus({ currentUser }) {
   };
 
   const updateStatus = () => {
-    updatePost(currentPost.id, status);
+    updatePost(currentPost.id, status, postImage);
     setModalOpen(false);
     setStatus("");
   };
+
+  console.log(currentPost);
 
   useMemo(() => {
     getStatus(setAllStatus);
@@ -69,6 +76,12 @@ export default function PostStatus({ currentUser }) {
             sendStatus={sendStatus}
             isEdit={isEdit}
             updateStatus={updateStatus}
+            PostUploadImage={PostUploadImage}
+            setPostImage={setPostImage}
+            postImage={postImage}
+            setProgress={setProgress}
+            progress={progress}
+            currentPost={currentPost}
           />
         </div>
       </div>

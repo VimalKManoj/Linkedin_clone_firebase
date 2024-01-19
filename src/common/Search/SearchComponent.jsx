@@ -10,6 +10,7 @@ const SearchComponent = ({
 }) => {
   const [showResults, setShowResults] = useState(true);
   let navigate = useNavigate();
+
   const openUser = (user) => {
     navigate("/profile", { state: { id: user.id, email: user.email } });
     setSearchInput("");

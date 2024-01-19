@@ -3,13 +3,17 @@
 $linkedin-color: #2172ed;
 
 .create-post-div {
-  height: 10em;
+  height: 100%;
+  margin-bottom: 5rem;
 }
 
 .modal-input {
   border: none;
   outline: none;
+  padding: 1rem;
   padding-left: 0;
+  width: 100%;
+  resize: none;
   font-family: system-ui, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
@@ -22,6 +26,24 @@ $linkedin-color: #2172ed;
   border-radius: 20px;
   color: #fff;
   position: absolute;
-  bottom: 8px;
-  right: 1rem;
+  bottom: 22px;
+  right: 24px;
+}
+
+.preview-image {
+  width: 100%;
+  max-height: 275px;
+  object-fit: contain;
+}
+
+.insert-icon-div {
+  position: absolute;
+  bottom: 20px;
+  left: 21px;
+}
+
+.insert-icon {
+  height: 40px !important;
+  width: 40px !important;
+  color: $linkedin-color;
 }

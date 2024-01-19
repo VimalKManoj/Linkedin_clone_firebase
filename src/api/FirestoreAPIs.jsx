@@ -168,10 +168,10 @@ export const getAllUsers = (setAllUsers) => {
   });
 };
 
-export const updatePost = (id, status) => {
+export const updatePost = (id, status, postImage) => {
   let postToUpdate = doc(postsRef, id);
   try {
-    updateDoc(postToUpdate, { status });
+    updateDoc(postToUpdate, { status, postImage });
     toast.success("post has been updated successfully");
   } catch (error) {
     console.log(error);

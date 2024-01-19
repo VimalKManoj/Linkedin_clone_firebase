@@ -31,7 +31,7 @@ export default function Topbar({ currentUser }) {
       setSearchUser(allUsers);
     }
   };
-  // console.log(allUsers.map((user) => user.name));
+
   useEffect(() => {
     getAllUsers(setAllUsers);
   }, []);
