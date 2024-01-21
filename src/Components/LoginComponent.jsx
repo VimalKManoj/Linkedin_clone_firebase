@@ -11,6 +11,9 @@ export const LoginComponent = () => {
 
   let navigate = useNavigate();
 
+  // let totalh =screen.availHeight
+  // let totalw =screen.availWidth
+
   const login = async () => {
     try {
       let res = await LoginAPI(credentails.email, credentails.password);
@@ -44,6 +47,7 @@ export const LoginComponent = () => {
 
         <div className="auth-inputs">
           <p>Welcome back! Please login into your account.</p>
+        {/* <h2>{totalh}/{totalw}</h2> */}
           <input
             className="input-content"
             onChange={(event) =>

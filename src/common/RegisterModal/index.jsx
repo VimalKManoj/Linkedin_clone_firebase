@@ -43,13 +43,14 @@ const RegisterModal = ({ modalOpen, setModalOpen }) => {
             alt="Login Image"
             className="registerlogo"
           />
-
-          <div className="auth-inputs">
-            <p
-              style={{ fontSize: "1.3rem", color: "black", fontWeight: "900" }}
+          <p
+              style={{ fontSize: "1.3rem", color: "black", fontWeight: "500" }}
             >
               Create your account
             </p>
+
+          <div className="auth-inputs">
+            
             <input
               className="input-content"
               onChange={(event) =>
