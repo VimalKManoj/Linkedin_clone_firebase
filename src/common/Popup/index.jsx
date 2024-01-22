@@ -30,6 +30,7 @@ const Popup = ({ currentUser }) => {
     <Space wrap>
       <Popover content={<Content navigate={navigate} />} trigger="click">
         <button
+        className="mobile-button"
           style={{
             padding: "0",
             backgroundColor: "transparent",

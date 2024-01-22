@@ -45,6 +45,7 @@ export default function Topbar({ currentUser }) {
   }, [searchInput]);
 
   return (
+    <>
     <div className="header">
       <div className="header_left">
         <img
@@ -77,5 +78,28 @@ export default function Topbar({ currentUser }) {
         <Popup currentUser={currentUser} />
       </div>
     </div>
+    <div className="header-container-mobile">
+    <div className="header-mobile">
+    <img
+    className="linkedin-logo"
+        onClick={() => {
+          navigate("/home");
+        }}
+        // src="public\assets\linkedin_icon.png"
+        src="/assets/linkedin_icon.png"
+        alt=""
+      />
+
+      <SearchComponent
+        setSearchInput={setSearchInput}
+        searchInput={searchInput}
+        allUsers={allUsers}
+        searchedUser={searchedUser}
+      />
+      <Popup currentUser={currentUser} />
+    </div>
+  </div>
+  </>
+
   );
 }
