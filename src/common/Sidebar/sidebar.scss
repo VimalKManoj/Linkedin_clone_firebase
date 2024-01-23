@@ -93,3 +93,25 @@
   height: 100px !important;
   width: 100px !important;
 }
+
+@media only screen and (max-width: 768px) {
+  .app_container {
+    flex-direction: column;
+  }
+
+  .sidebar_top{
+    padding-bottom: 0;
+  }
+
+  .sidebar_top > img{
+    height: 100px;
+  }
+
+  .feed_inputcontainer{
+    margin-left: 0.8rem;
+  }
+
+  .post{
+    margin-left: 0.8rem;
+  }
+}
