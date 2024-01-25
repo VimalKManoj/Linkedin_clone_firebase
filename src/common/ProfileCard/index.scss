@@ -259,3 +259,25 @@
   font-family: "Roboto", sans-serif;
   font-weight: 300;
 }
+
+@media only screen and (max-width:768px){
+
+  .profile-info{
+    display: flex;
+    flex-direction: column;
+  }
+  .place{
+    margin: 0;
+    margin-right: 0;
+  }
+  
+  .name-place p{
+    margin-right: 0;
+  }
+
+  .profile_inputcontainer{
+    margin-left: 0.8rem;
+  }
+
+  
+}

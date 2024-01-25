@@ -138,6 +138,18 @@ export default function PostCard({ posts, getEditData }) {
       </div>
       {showCommentBox ? (
         <div className="comment-container">
+          <div className="comment-send-container-mobile">
+            <input
+              onChange={getComment}
+              className="comment-input-mobile"
+              placeholder="Add a comment..."
+              name="comment"
+              value={comment}
+            />
+            <button onClick={addComment} disabled={comment ? false : true}>
+              <SendIcon fontSize="small" />
+            </button>
+          </div>
           {comments.length > 0 ? (
             comments.map((comment) => {
               return (
