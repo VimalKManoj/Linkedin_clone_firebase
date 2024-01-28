@@ -11,7 +11,7 @@ Welcome to the React LinkedIn Clone, a modern and feature-rich social platform b
 
 ## Demo
 
-For a live demo, check out (https://linkedinclone-firebase-project.vercel.app/)https://linkedinclone-firebase-project.vercel.app)
+For a live demo, check out (https://linkedinclone-firebase-project.vercel.app/)
 
 ## Usage
 
